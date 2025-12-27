@@ -1,9 +1,118 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+export default function App() {
+  const products = [
+    {
+      name: "Pro Carbon Fishing Rod",
+      price: "$129.99",
+      description: "Lightweight, high-strength rod built for serious anglers.",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+    },
+    {
+      name: "Saltwater Spinning Reel",
+      price: "$89.99",
+      description: "Smooth performance reel designed for saltwater fishing.",
+      image: "https://images.unsplash.com/photo-1516685018646-549dba3f41f8"
+    },
+    {
+      name: "Premium Lure Set",
+      price: "$39.99",
+      description: "A versatile lure kit for freshwater and saltwater.",
+      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+    },
+    {
+      name: "Apex Angling Hoodie",
+      price: "$49.99",
+      description: "Comfortable, durable merch for anglers on and off the water.",
+      image: "https://images.unsplash.com/photo-1520975916090-3105956dac38"
+    }
+  ];
+
+  return (
+    <div style={{ fontFamily: "Arial, sans-serif", color: "#1f2937" }}>
+      {/* Header */}
+      <header style={{ background: "#0f172a", color: "white", padding: "20px 40px" }}>
+        <h1 style={{ margin: 0 }}>Apex Angling</h1>
+        <p style={{ margin: "5px 0 0" }}>Premium fishing gear & outdoor merch</p>
+      </header>
+
+      {/* Hero */}
+      <section
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          padding: "120px 40px",
+          color: "white",
+          textAlign: "center"
+        }}
+      >
+        <h2 style={{ fontSize: 42, marginBottom: 20 }}>
+          Built for Serious Anglers
+        </h2>
+        <p style={{ fontSize: 18, maxWidth: 700, margin: "0 auto" }}>
+          Professional-grade fishing equipment and branded apparel designed for performance, durability, and style.
+        </p>
+      </section>
+
+      {/* Products */}
+      <section style={{ padding: "60px 40px", maxWidth: 1200, margin: "0 auto" }}>
+        <h2 style={{ textAlign: "center", marginBottom: 40 }}>
+          Featured Products
+        </h2>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: 30
+          }}
+        >
+          {products.map((p, i) => (
+            <div
+              key={i}
+              style={{
+                border: "1px solid #e5e7eb",
+                borderRadius: 12,
+                overflow: "hidden",
+                boxShadow: "0 10px 20px rgba(0,0,0,0.08)"
+              }}
+            >
+              <img
+                src={p.image}
+                alt={p.name}
+                style={{ width: "100%", height: 180, objectFit: "cover" }}
+              />
+              <div style={{ padding: 20 }}>
+                <h3 style={{ margin: "0 0 10px" }}>{p.name}</h3>
+                <p style={{ fontSize: 14, marginBottom: 10 }}>{p.description}</p>
+                <strong>{p.price}</strong>
+                <button
+                  style={{
+                    display: "block",
+                    marginTop: 15,
+                    width: "100%",
+                    padding: "10px",
+                    background: "#0f172a",
+                    color: "white",
+                    border: "none",
+                    borderRadius: 6,
+                    cursor: "pointer"
+                  }}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer style={{ background: "#0f172a", color: "#cbd5f5", padding: 30, textAlign: "center" }}>
+        <p>© 2025 Apex Angling. Built for anglers worldwide.</p>
+      </footer>
+    </div>
+  );
+}
